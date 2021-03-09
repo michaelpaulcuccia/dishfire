@@ -9,17 +9,19 @@ import User from '../../models/User.js';
 //ROUTE: /api/users/registeruser
 const registerUser = expressAsyncHandler(async (req, res) => {
 
+    /**NOTE: MUST RETURN ALL REQUIRED FIELDS - SEE /model/User.js */
+
     const {
         name,
-        picture,
+        // picture,
         email,
         password,
-        yearOfBirth,
-        monthOfBirth,
-        dayOfBirth,
-        hometownCity,
-        hometownState,
-        hometownZip
+        // yearOfBirth,
+        // monthOfBirth,
+        // dayOfBirth,
+        // hometownCity,
+        // hometownState,
+        // hometownZip
     } = req.body;
 
     //make sure user doesn't already exists
@@ -32,23 +34,23 @@ const registerUser = expressAsyncHandler(async (req, res) => {
 
     const user = await User.create({
         name,
-        picture,
+        // picture,
         email,
         password,
-        yearOfBirth,
-        monthOfBirth,
-        dayOfBirth,
-        hometownCity,
-        hometownState,
-        hometownZip
+        // yearOfBirth,
+        // monthOfBirth,
+        // dayOfBirth,
+        // hometownCity,
+        // hometownState,
+        // hometownZip
     });
 
     if (user) {
         res.status(201).json({
             _id: user._id,
             name: user.name,
-            email: user.email,
-            hometownZip: user.hometownZip
+            email: user.email
+            //...
         })
     } else {
         res.status(400);

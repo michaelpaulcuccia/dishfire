@@ -5,10 +5,11 @@ const userSchema = mongoose.Schema({
         type: String,
         required: true
     },
-    picture: {
-        type: String,
-        required: true,
-    },
+    // picture: {
+    //     type: String,
+    //     required: true,
+    // }
+    // ,
     email: {
         type: String,
         required: true,
@@ -17,31 +18,32 @@ const userSchema = mongoose.Schema({
     password: {
         type: String,
         required: true
-    },
-    yearOfBirth: {
-        type: Number,
-        required: true,
-    },
-    monthOfBirth: {
-        type: Number,
-        required: true,
-    },
-    dayOfBirth: {
-        type: Number,
-        required: true,
-    },
-    hometownCity: {
-        type: String,
-        required: true,
-    },
-    hometownState: {
-        type: String,
-        required: true,
-    },
-    hometownZip: {
-        type: String,
-        required: true
     }
+    // ,
+    // yearOfBirth: {
+    //     type: Number,
+    //     required: true,
+    // },
+    // monthOfBirth: {
+    //     type: Number,
+    //     required: true,
+    // },
+    // dayOfBirth: {
+    //     type: Number,
+    //     required: true,
+    // },
+    // hometownCity: {
+    //     type: String,
+    //     required: true,
+    // },
+    // hometownState: {
+    //     type: String,
+    //     required: true,
+    // },
+    // hometownZip: {
+    //     type: String,
+    //     required: true
+    // }
 }, {
     //createdAt and updatedAt
     timestamps: true
