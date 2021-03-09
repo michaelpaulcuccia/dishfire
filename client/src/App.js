@@ -1,9 +1,18 @@
-import React from 'react'
+import React from 'react';
+import Home from './components/Home';
+import Login from './components/Login';
+import Register from './components/Register';
 
 const App = () => {
   return (
     <div>
-      Hello, from App.js
+      <Home />
+      <br></br>
+      <br></br>
+      <Login />
+      <br></br>
+      <br></br>
+      <Register />
     </div>
   )
 }
