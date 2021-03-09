@@ -1,7 +1,8 @@
 import express from 'express';
 export const router = express.Router();
-import User from '../../models/User.js';
 import expressAsyncHandler from 'express-async-handler';
+import generateToken from '../../utils/generateToken.js';
+import User from '../../models/User.js';
 
 //REGISTER USER
 //ROUTE: /api/users/registeruser
@@ -58,7 +59,7 @@ const registerUser = expressAsyncHandler(async (req, res) => {
 router.route('/registeruser').post(registerUser);
 
 //AUTH USER
-//ROUTE: /api/users/authuser
+//ROUTE: /api/users/login
 const authUser = expressAsyncHandler(async (req, res) => {
 
     const { email, password } = req.body;
@@ -70,14 +71,14 @@ const authUser = expressAsyncHandler(async (req, res) => {
         res.json({
             _id: user._id,
             name: user.name,
-            email: user.email
-            //token TO DO
+            email: user.email,
+            token: generateToken(user._id)
         })
     } else {
         res.status(401)
         throw new Error('Invalid Email or Password')
     }
 })
-router.route('/authuser').post(authUser);
+router.route('/login').post(authUser);
 
 export default router;
