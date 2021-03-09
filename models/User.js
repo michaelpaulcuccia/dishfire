@@ -6,7 +6,8 @@ const userSchema = mongoose.Schema({
         required: true
     },
     picture: {
-        type: String
+        type: String,
+        required: true,
     },
     email: {
         type: String,
@@ -19,18 +20,27 @@ const userSchema = mongoose.Schema({
     },
     yearOfBirth: {
         type: Number,
+        required: true,
     },
     monthOfBirth: {
         type: Number,
+        required: true,
     },
     dayOfBirth: {
         type: Number,
+        required: true,
     },
     hometownCity: {
-        type: String
+        type: String,
+        required: true,
     },
     hometownState: {
-        type: String
+        type: String,
+        required: true,
+    },
+    hometownZip: {
+        type: String,
+        required: true
     }
 }, {
     //createdAt and updatedAt
@@ -42,6 +52,10 @@ const User = mongoose.model('User', userSchema);
 
 export default User;
 
+
+
+
+
 /*
 {
 "name": "Michael",
@@ -52,6 +66,7 @@ export default User;
 "monthOfBirth": 9,
 "dayOfBirth": 20,
 "hometownCity": "Metuchen",
-"hometownState": "New Jersey"
+"hometownState": "New Jersey",
+"hometownZip": "08840"
 }
 */
