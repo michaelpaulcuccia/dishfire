@@ -2,6 +2,7 @@ import express from 'express';
 export const router = express.Router();
 import expressAsyncHandler from 'express-async-handler';
 import generateToken from '../../utils/generateToken.js';
+import { protect } from '../../middleware/authMiddleware.js';
 import User from '../../models/User.js';
 
 //REGISTER USER
@@ -75,10 +76,31 @@ const authUser = expressAsyncHandler(async (req, res) => {
             token: generateToken(user._id)
         })
     } else {
-        res.status(401)
-        throw new Error('Invalid Email or Password')
+        res.status(401);
+        throw new Error('Invalid Email or Password');
     }
 })
 router.route('/login').post(authUser);
+
+//GET USER PROFILE **PROTECTED**
+//ROUTE: /api/users/profile
+const getUserProfile = expressAsyncHandler(async (req, res) => {
+
+    //current logged in user
+    const user = await User.findById(req.user._id)
+
+    if (user) {
+        res.json({
+            _id: user._id,
+            name: user.name,
+            email: user.email
+        })
+    } else {
+        res.status(404);
+        throw new Error("User not found");
+    }
+
+})
+router.route('/profile').get(protect, getUserProfile);
 
 export default router;
