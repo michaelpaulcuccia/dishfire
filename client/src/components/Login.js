@@ -1,13 +1,33 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { login } from '../actions/userActions.js';
 import { useForm } from "react-hook-form";
 import { Container, Form, Button, Row, Col } from 'react-bootstrap';
 
 const Login = () => {
 
-    const { register, handleSubmit, reset } = useForm();
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+
+    const dispatch = useDispatch();
+
+    //get state
+    const userLogin = useSelector(state => state.userLogin);
+    const { loading, error } = userLogin;
+
+    //react-hook-form
+    const { register, handleSubmit } = useForm();
 
     const onSubmit = async (data) => {
         console.log(data);
+
+        setEmail(data.email);
+        setPassword(data.password);
+
+        //DISPATCH LOGIN
+        dispatch(login(email, password));
+
+
     }
 
 
@@ -23,6 +43,10 @@ const Login = () => {
 
                 <Col>
                     <h1> Sign Into Your Account</h1>
+
+                    {error && <h1>Error on login</h1>}
+                    {loading && <h1>Loading...</h1>}
+
                     <Form className='py-3'
                         onSubmit={handleSubmit(onSubmit)}
                     >

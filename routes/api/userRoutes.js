@@ -69,8 +69,22 @@ const authUser = expressAsyncHandler(async (req, res) => {
 
     const user = await User.findOne({ email });
 
+    let dbPassword;
+    if (user) {
+        dbPassword = user.password;
+    }
+
+    /*
+    THIS IS FAILING FOR SOME STRANGE REASON...
+    it won't work the first time, but it usually works the second time
+    */
+
+    console.log(password)
+    console.log(user)
+    console.log(dbPassword)
+
     //user exists, and entered password matches db password
-    if (user && password === user.password) {
+    if (user && password && dbPassword && password === dbPassword) {
         res.json({
             _id: user._id,
             name: user.name,
