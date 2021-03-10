@@ -1,5 +1,5 @@
 import React from 'react';
-import { Container, Form, Button, Row, Col } from 'react-bootstrap';
+import { Container, Form, Row, Col } from 'react-bootstrap';
 
 const Register = () => {
 
@@ -9,10 +9,10 @@ const Register = () => {
             <Row>
 
                 <Col>
-                    Col 1 of 2
+
                 </Col>
 
-                <Col>
+                <Col className='py-3'>
                     <h1> Welcome New User</h1>
 
                     <Form className='py-3'
@@ -54,7 +54,7 @@ const Register = () => {
                             </Form.Control>
                         </Form.Group>
 
-                        <Button type='submit' variant='primary'>Register</Button>
+                        <button type='submit' className='_in_btn'>Register</button>
 
                     </Form>
 

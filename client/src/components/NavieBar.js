@@ -3,11 +3,12 @@ import { Navbar, Nav } from 'react-bootstrap';
 import { LinkContainer } from 'react-router-bootstrap';
 
 const NavieBar = () => {
+
     return (
-        <Navbar bg="light" expand="lg">
+        <Navbar className="navie" variant='light' expand="lg">
 
             <LinkContainer to='/'>
-                <Navbar.Brand>React-Bootstrap</Navbar.Brand>
+                <Navbar.Brand as='button' className='nav_btn'>dishFire <i class="fas fa-fire"></i></Navbar.Brand>
             </LinkContainer>
 
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
@@ -17,15 +18,15 @@ const NavieBar = () => {
                 <Nav className="ml-auto">
 
                     <LinkContainer to='/'>
-                        <Nav.Link>Home</Nav.Link>
+                        <Nav.Link as='button' className='nav_btn'>Home</Nav.Link>
                     </LinkContainer>
 
                     <LinkContainer to='/login'>
-                        <Nav.Link>Login</Nav.Link>
+                        <Nav.Link as='button' className='nav_btn'>Login</Nav.Link>
                     </LinkContainer>
 
                     <LinkContainer to='/register'>
-                        <Nav.Link>Register</Nav.Link>
+                        <Nav.Link as='button' className='nav_btn'>Register</Nav.Link>
                     </LinkContainer>
 
                     {/* <NavDropdown title="Dropdown" id="basic-nav-dropdown">
