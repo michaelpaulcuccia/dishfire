@@ -1,0 +1,44 @@
+.input_field_left {
+    border-radius: 25px;
+    border-color: black;
+    border-width: 1px;
+    background: #40474C;
+    padding: 10px;
+    width: 110px;
+    height: 16px;
+    color: white;
+    margin-top: 2px;
+    margin-left: 5px;
+  }
+
+  .input_field_right {
+    border-radius: 25px;
+    border-color: black;
+    border-width: 1px ;
+    background: #40474C;
+    padding: 10px;
+    width: 110px;
+    height: 16px;
+    color: white;
+    margin-top: 2px;
+    margin-right: 5px;
+  }
+
+ .login_form {
+    border-radius: 10px;
+    border-color: black;
+    border-width: 1px;
+    background-color: lightseagreen;
+    width: 135px;
+    height: 90px;
+ }
+
+ .login_button {
+    border-radius: 25px;
+    border-color: black;
+    border-width: 1px ;
+    background: #40474C;
+    color: white;
+    margin-top: 2px;
+    margin: 0 auto;
+ }

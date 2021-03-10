@@ -10,8 +10,23 @@ const Login = () => {
             <Row>
 
                 <Col>
-                    Column 1 of 2
-                    </Col>
+                    <>
+                        <form className="login_form">
+                            <div>
+                                <i class="fas fa-user"></i>
+                                <input className="input_field_left" type="text" name="name" value="first name" />
+                            </div>
+                            <div>
+                                <input className="input_field_right" type="text" name="password" value="password" />
+                                <i class="fas fa-lock"></i>
+                            </div>
+                            <div>
+                                <button className="login_button">Login</button>
+                            </div>
+
+                        </form>
+                    </>
+                </Col>
 
                 <Col>
                     <h1> Sign Into Your Account</h1>
