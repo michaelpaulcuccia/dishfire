@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { Container, Form, Row, Col } from 'react-bootstrap';
 
 const Login = () => {
@@ -49,7 +50,7 @@ const Login = () => {
 
                     <Row className='py-3'>
                         <Col>
-                            Don't have an account? Sign Up
+                            Don't have an account? <Link to='/register'>Sign Up</Link>
                         </Col>
                     </Row>
 

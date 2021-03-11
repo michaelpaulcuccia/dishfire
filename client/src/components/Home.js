@@ -37,7 +37,7 @@ const Home = () => {
                         <Card.Body>Geolocation data of more than 76,000 text messages and other travel information</Card.Body>
                     </Accordion.Collapse>
                     <Accordion.Collapse eventKey="0">
-                        <Card.Body>Over 110,000 names, gathered from electronic business cards</Card.Body>
+                        <Card.Body>Over 110,000 names gathered from electronic business cards</Card.Body>
                     </Accordion.Collapse>
                     <Accordion.Collapse eventKey="0">
                         <Card.Body>Over 800,000 financial transactions that are either gathered from text-to-text payments or from linking credit cards to phone users</Card.Body>

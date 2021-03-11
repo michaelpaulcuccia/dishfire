@@ -53,7 +53,7 @@ const Plans = () => {
                         <ListGroup.Item>Tell us what you are interested in. <p>We offer consulting and custom development.</p></ListGroup.Item>
                     </ListGroup>
                     <div className='py-3'>
-                        <LinkContainer to='/'>
+                        <LinkContainer to='/contactus'>
                             <button type='submit' className='_in_btn'>Contact Us for Specialized Development</button>
                         </LinkContainer>
                     </div>

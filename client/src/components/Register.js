@@ -13,15 +13,18 @@ const Register = () => {
 
     const onSubmit = async (data) => {
 
+        console.log(data)
+
+        //error message if plan isn't chosen
         if (data.freepreview === false && data.standardpackage === false) {
             setMessage('You Must Select a Plan');
+            //clear form
+            reset();
+        } else {
+            window.alert("Thank you for registering!")
             reset();
         }
 
-        console.log(data)
-
-        window.alert("Thank you for registering!")
-        reset();
     }
 
     return (
