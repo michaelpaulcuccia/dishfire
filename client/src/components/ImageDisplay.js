@@ -10,6 +10,7 @@ const ImageDisplay = () => {
     let prevIcon = '';
 
     return (
+
         <Carousel
             className='carousel'
             indicators={false}
@@ -32,9 +33,8 @@ const ImageDisplay = () => {
                     alt="second_slide"
                 />
             </Carousel.Item>
-
-
         </Carousel>
+
     )
 }
 

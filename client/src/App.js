@@ -5,6 +5,8 @@ import NavieBar from './components/NavieBar';
 import Home from './components/Home';
 import Login from './components/Login';
 import Register from './components/Register';
+import Plans from './components/Plans';
+
 
 const App = () => {
   return (
@@ -14,6 +16,7 @@ const App = () => {
         <Route path='/' component={Home} exact />
         <Route path='/login' component={Login} exact />
         <Route path='/register' component={Register} exact />
+        <Route path='/plans' component={Plans} exact />
       </Container>
     </Router>
   )

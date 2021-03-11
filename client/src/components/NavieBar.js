@@ -29,6 +29,10 @@ const NavieBar = () => {
                         <Nav.Link as='button' className='nav_btn'>Register</Nav.Link>
                     </LinkContainer>
 
+                    <LinkContainer to='/plans'>
+                        <Nav.Link as='button' className='nav_btn'>Plans</Nav.Link>
+                    </LinkContainer>
+
                     {/* <NavDropdown title="Dropdown" id="basic-nav-dropdown">
                         <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
                         <NavDropdown.Item href="#action/3.2">Another action</NavDropdown.Item>
