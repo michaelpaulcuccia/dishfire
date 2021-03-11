@@ -6,6 +6,7 @@ import Home from './components/Home';
 import Login from './components/Login';
 import Register from './components/Register';
 import Plans from './components/Plans';
+import Footer from './components/Footer';
 
 
 const App = () => {
@@ -18,6 +19,7 @@ const App = () => {
         <Route path='/register' component={Register} exact />
         <Route path='/plans' component={Plans} exact />
       </Container>
+      <Footer />
     </Router>
   )
 }

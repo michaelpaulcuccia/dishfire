@@ -1,14 +1,16 @@
+/*Login, Register, Plans Buttons*/
 ._in_btn {
     width: 100%;
     height: 50px;
     font-size: 17px;
-    background: rgba(103,58,183);
+    background: #083A67;
     border: none;
     border-radius: 50px;
     color: #fff;
     cursor: pointer;
 }
 
+/*NavBar Tabs/Buttons*/
 .nav_btn {
     background-color: white;
     border: none;
@@ -22,17 +24,18 @@
     border-radius: 50px;
 }
 
+/*NavBar*/
 .navie {
-    background-color:  rgba(103,58,183);
+    background-color:  #083A67;
     border-radius: 50px;
 }
 
+/*Global Fonts*/
 * {
     font-family: 'Josefin Sans', sans-serif;
 }
 
-.carousel {
-    width: 292px;
-    height: 162px;
-    margin: auto;
-  }
+/*Home.js*/
+.home_colored_text {
+    color: #083A67;
+}

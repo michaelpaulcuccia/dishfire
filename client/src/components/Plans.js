@@ -7,7 +7,7 @@ const Plans = () => {
 
         <>
             <div className='py-3'>
-                <Jumbotron style={{ marginTop: '5px' }}>
+                <Jumbotron style={{ marginTop: '5px', backgroundColor: '#083A67', color: 'white' }}>
                     <Container>
                         <h1>dishFire <i class="fas fa-fire"></i></h1>
                         <h3>
@@ -59,16 +59,6 @@ const Plans = () => {
                     </div>
                 </Col>
             </Row>
-
-            <footer>
-                <Container>
-                    <Row>
-                        <Col className='text-center py-3'>
-                            Copyright &copy; dishFire <i class="fas fa-fire"></i>
-                        </Col>
-                    </Row>
-                </Container>
-            </footer>
 
         </>
 
