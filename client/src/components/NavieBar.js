@@ -8,7 +8,7 @@ const NavieBar = () => {
         <Navbar className="navie" variant='light' expand="lg">
 
             <LinkContainer to='/'>
-                <Navbar.Brand as='button' className='nav_btn'>dishFire <i class="fas fa-fire"></i></Navbar.Brand>
+                <Navbar.Brand as='button' className='nav_btn'>dishFire <i className="fas fa-fire"></i></Navbar.Brand>
             </LinkContainer>
 
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
