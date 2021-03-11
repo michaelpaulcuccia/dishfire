@@ -1,8 +1,12 @@
 import express from 'express';
 import mongoose from 'mongoose';
 import config from './config.js';
+import userRoutes from './routes/userRoutes.js';
 
 const app = express();
+
+//parse req.body
+app.use(express.json());
 
 (async () => {
     try {
@@ -21,6 +25,9 @@ const app = express();
         process.exit(1);
     }
 })();
+
+//routes
+app.use('/api/users', userRoutes);
 
 const PORT = process.env.PORT || 5000;
 
