@@ -11,7 +11,7 @@ const Home = () => {
 
                 >
                     <Container>
-                        <h1>dishFire <i class="fas fa-fire"></i></h1>
+                        <h1>dishFire <i className="fas fa-fire"></i></h1>
                         <h3>
                             incorruptable solutions for corrupt enterprises
                         </h3>
