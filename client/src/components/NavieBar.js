@@ -47,20 +47,31 @@ const NavieBar = () => {
                         </LinkContainer>
                     }
 
-                    {/* Show/Hide Prefer */}
-                    {userInfo &&
+                    {/* Show/Hide Prefer Plan Type 1 of 2 */}
+                    {userInfo && userInfo.plan === 'freepackage' &&
                         <LinkContainer to='/prefer'>
-                            <Nav.Link as='button' className='nav_btn'>Prefer</Nav.Link>
+                            <Nav.Link as='button' className='nav_btn'>Preview Prefer</Nav.Link>
                         </LinkContainer>
                     }
 
-                    <LinkContainer to='/register'>
-                        <Nav.Link as='button' className='nav_btn'>Register</Nav.Link>
-                    </LinkContainer>
+                    {/* Show/Hide Prefer Plan Type 2 of 2 */}
+                    {userInfo && userInfo.plan === 'standardpackage' &&
+                        <LinkContainer to='/prefer'>
+                            <Nav.Link as='button' className='nav_btn'>Standard Prefer</Nav.Link>
+                        </LinkContainer>
+                    }
 
-                    <LinkContainer to='/plans'>
-                        <Nav.Link as='button' className='nav_btn'>Plans</Nav.Link>
-                    </LinkContainer>
+                    {!userInfo &&
+                        <LinkContainer to='/register'>
+                            <Nav.Link as='button' className='nav_btn'>Register</Nav.Link>
+                        </LinkContainer>
+                    }
+
+                    {!userInfo &&
+                        <LinkContainer to='/plans'>
+                            <Nav.Link as='button' className='nav_btn'>Plans</Nav.Link>
+                        </LinkContainer>
+                    }
 
                 </Nav>
 
