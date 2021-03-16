@@ -29,13 +29,14 @@ userSchema.methods.matchPassword = async function (enteredPassword) {
     return await bcrypt.compare(enteredPassword, this.password)
 }
 
+//before saving 'pre-save', encrypt password
 userSchema.pre('save', async function (next) {
-    //run only if password field is sent or modified
+    //run ONLY if password field is sent or modified - when user updates profile, skip
     if (!this.isModified('password')) {
         next();
     }
     const salt = await bcrypt.genSalt(10);
-    //plain text password set to hashed password
+    //plain text password created by user is set to hashed password
     this.password = await bcrypt.hash(this.password, salt);
 })
 

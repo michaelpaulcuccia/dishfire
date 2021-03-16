@@ -1,4 +1,3 @@
-import e from 'express';
 import expressAsyncHandler from 'express-async-handler';
 import User from '../models/User.js';
 import generateToken from '../utils/generateToken.js';
@@ -17,6 +16,7 @@ const authUser = expressAsyncHandler(async (req, res) => {
             _id: user._id,
             name: user.name,
             email: user.email,
+            plan: user.plan,
             token: generateToken(user._id)
         })
     } else {
@@ -49,8 +49,8 @@ const registerUser = expressAsyncHandler(async (req, res) => {
             _id: user._id,
             name: user.name,
             email: user.email,
-            plan: user.plan
-            //token
+            plan: user.plan,
+            token: generateToken(user._id)
         })
     } else {
         res.status(400);
@@ -69,7 +69,8 @@ const getUserProfile = expressAsyncHandler(async (req, res) => {
         res.json({
             _id: user._id,
             name: user.name,
-            email: user.email
+            email: user.email,
+            plan: user.plan
         });
     } else {
         res.status(404);

@@ -17,7 +17,7 @@ const protect = expressAsyncHandler(async (req, res, next) => {
 
             const decoded = jwt.verify(token, config.JWT_SECRET);
 
-            //set user, remove id
+            //set user, remove password
             req.user = await User.findById(decoded.id).select('-password');
 
             next()
