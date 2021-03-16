@@ -1,64 +1,63 @@
 import React, { useState } from 'react';
 import { Container, Form, Row, Col } from 'react-bootstrap';
-import { useForm } from "react-hook-form";
 import Message from './Message';
 
 const Register = () => {
 
-    //error message if plan isn't chosen
-    const [message, setMessage] = useState(null);
+    const [name, setName] = useState('');
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+    const [plan, setPlan] = useState('');
+    const [planMessage, setPlanMessage] = useState(null);
 
-    //react-hook-form
-    const { register, handleSubmit, reset } = useForm();
-
-    const onSubmit = async (data) => {
-
-        console.log(data)
+    const submitHandler = (event) => {
+        event.preventDefault();
 
         //error message if plan isn't chosen
-        if (data.freepreview === false && data.standardpackage === false) {
-            setMessage('You Must Select a Plan');
-            //clear form
-            reset();
+        if (plan === '') {
+            setPlanMessage('You Must Select a Plan');
+
         } else {
             window.alert("Thank you for registering!")
-            reset();
+
         }
 
-    }
+        console.log(name, email, password, plan)
+
+    };
 
     return (
         <Container>
 
             {
-                message &&
+                planMessage &&
                 <>
                     <br></br>
-                    <Message variant='danger'>{message}</Message>
+                    <Message variant='danger'>You Must Select a Plan</Message>
                 </>
             }
 
             <Row>
 
                 <Col>
-
+                    {/* empty column */}
                 </Col>
 
                 <Col className='py-3'>
                     <h1> Welcome New User</h1>
 
                     <Form className='py-3'
-                        onSubmit={handleSubmit(onSubmit)}
+                        onSubmit={submitHandler}
                     >
 
                         <Form.Group controlId='name'>
                             <Form.Label>Name</Form.Label>
                             <Form.Control
-                                type="text"
+                                type="name"
                                 placeholder='Enter Name'
                                 required
-                                name="name"
-                                ref={register}
+                                value={name}
+                                onChange={(event) => setName(event.target.value)}
                             >
                             </Form.Control>
                         </Form.Group>
@@ -68,9 +67,8 @@ const Register = () => {
                             <Form.Control
                                 type="email"
                                 placeholder='Enter Email'
-                                required
-                                name="email"
-                                ref={register}
+                                value={email}
+                                onChange={(event) => setEmail(event.target.value)}
                             >
                             </Form.Control>
                         </Form.Group>
@@ -80,29 +78,24 @@ const Register = () => {
                             <Form.Control
                                 type="password"
                                 placeholder='Enter Password'
-                                required
-                                name="password"
-                                ref={register}
+                                value={password}
+                                onChange={(event) => setPassword(event.target.value)}
                             >
                             </Form.Control>
                         </Form.Group>
 
                         <Form.Group controlId='plantype'>
                             <Form.Label>Please Select a Plan</Form.Label>
-                            <Form.Check
-                                type={'checkbox'}
-                                id='freepreview'
-                                name='freepreview'
-                                label='Free Preview'
-                                ref={register}
-                            />
-                            <Form.Check
-                                type={'checkbox'}
-                                id='standardpackage'
-                                name='standardpackage'
-                                label='Standard Package'
-                                ref={register}
-                            />
+                            <select name="Plans"
+                                style={{ marginLeft: '9px' }}
+                                required
+                                onChange={(event) => setPlan(event.target.value)}
+                            >
+                                {/* <option disabled selected value='--select an option--'>--select an option--</option> */}
+                                <option defaultValue='--select an option--'>--select an option--</option>
+                                <option value="freepreview">Free Preview</option>
+                                <option value="standardpackage">Standard Package</option>
+                            </select>
                         </Form.Group>
 
                         <button type='submit' className='_in_btn'>Register</button>
