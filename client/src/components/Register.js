@@ -29,14 +29,6 @@ const Register = () => {
     return (
         <Container>
 
-            {
-                planMessage &&
-                <>
-                    <br></br>
-                    <Message variant='danger'>You Must Select a Plan</Message>
-                </>
-            }
-
             <Row>
 
                 <Col>
@@ -83,6 +75,14 @@ const Register = () => {
                             >
                             </Form.Control>
                         </Form.Group>
+
+                        {
+                            planMessage &&
+                            <>
+                                <br></br>
+                                <Message variant='danger'>You Must Select a Plan</Message>
+                            </>
+                        }
 
                         <Form.Group controlId='plantype'>
                             <Form.Label>Please Select a Plan</Form.Label>
