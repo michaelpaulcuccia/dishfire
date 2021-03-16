@@ -1,12 +1,23 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
-import { Navbar, Nav } from 'react-bootstrap';
+import { useSelector, useDispatch } from 'react-redux';
+import { Navbar, Nav, NavDropdown } from 'react-bootstrap';
 import { LinkContainer } from 'react-router-bootstrap';
+import { logout } from '../actions/userActions.js';
 
 const NavieBar = () => {
 
+    const dispatch = useDispatch();
+
     const userLogin = useSelector(state => state.userLogin);
     const { userInfo } = userLogin;
+
+    //TO DO
+    //setup to show FREE-PREVIEW or STANDARD with Prefer Tab
+    console.log(userInfo);
+
+    const logoutHandler = () => {
+        dispatch(logout());
+    }
 
     return (
         <Navbar className="navie" variant='light' expand="lg">
@@ -25,12 +36,18 @@ const NavieBar = () => {
                         <Nav.Link as='button' className='nav_btn'>Home</Nav.Link>
                     </LinkContainer>
 
-                    {!userInfo &&
+                    {/* Show Username/Logout Or Show Login */}
+                    {userInfo ? (
+                        <NavDropdown as='button' className='nav_btn' title={userInfo.name} id="username">
+                            <NavDropdown.Item className='nav_btn' onClick={logoutHandler}>Logout</NavDropdown.Item>
+                        </NavDropdown>
+                    ) :
                         <LinkContainer to='/login'>
                             <Nav.Link as='button' className='nav_btn'>Login</Nav.Link>
                         </LinkContainer>
                     }
 
+                    {/* Show/Hide Prefer */}
                     {userInfo &&
                         <LinkContainer to='/prefer'>
                             <Nav.Link as='button' className='nav_btn'>Prefer</Nav.Link>
