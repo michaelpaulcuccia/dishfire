@@ -1,15 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { useForm } from "react-hook-form";
 import { useDispatch, useSelector } from 'react-redux';
 import { Container, Form, Row, Col } from 'react-bootstrap';
 import Message from './Message.js';
 import { login } from '../actions/userActions.js';
 
 const Login = ({ history, location }) => {
-
-    //react-hook-form
-    const { register, handleSubmit } = useForm();
 
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
@@ -28,20 +24,11 @@ const Login = ({ history, location }) => {
         }
     }, [history, userInfo, redirect]);
 
-    const onSubmit = async (data) => {
-
-        setEmail(data.email);
-        setPassword(data.password);
-
-        console.log('submit')
-
-        //validate data
-        if (email !== '' && password !== '') {
-            //dispatch login - pass email, password
-            dispatch(login(email, password))
-        }
-
-    }
+    const submitHandler = (event) => {
+        event.preventDefault();
+        //Dispatch Login
+        dispatch(login(email, password));
+    };
 
     return (
 
@@ -61,18 +48,16 @@ const Login = ({ history, location }) => {
                     {loading && <Message variant='warning'>Loading...</Message>}
 
                     <Form className='py-3'
-                        onSubmit={handleSubmit(onSubmit)}
+                        onSubmit={submitHandler}
                     >
 
                         <Form.Group controlId='email'>
                             <Form.Label>Email Address</Form.Label>
                             <Form.Control as='input'
-                                className='form_entry_field'
                                 type="email"
                                 placeholder='Enter Email'
-                                required
-                                name="email"
-                                ref={register}
+                                value={email}
+                                onChange={(event) => setEmail(event.target.value)}
                             >
                             </Form.Control>
                         </Form.Group>
@@ -80,12 +65,10 @@ const Login = ({ history, location }) => {
                         <Form.Group controlId='password'>
                             <Form.Label>Password</Form.Label>
                             <Form.Control
-                                className='form_entry_field'
                                 type="password"
                                 placeholder='Enter Password'
-                                required
-                                name="password"
-                                ref={register}
+                                value={password}
+                                onChange={(event) => setPassword(event.target.value)}
                             >
                             </Form.Control>
                         </Form.Group>
