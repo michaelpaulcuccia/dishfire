@@ -1,3 +1,4 @@
+import e from 'express';
 import expressAsyncHandler from 'express-async-handler';
 import User from '../models/User.js';
 import generateToken from '../utils/generateToken.js';
@@ -8,15 +9,8 @@ const authUser = expressAsyncHandler(async (req, res) => {
 
     const { email, password } = req.body;
 
-    console.log(`Email: ${email}, Password: ${password}`)
 
     const user = await User.findOne({ email });
-
-    console.log(user)
-
-    const test = await user.matchPassword(password)
-
-    console.log(`Test: ${test}`)
 
     if (user && (await user.matchPassword(password))) {
         res.json({
@@ -32,15 +26,7 @@ const authUser = expressAsyncHandler(async (req, res) => {
 
 })
 
-/*
-{
-    "name": "Bruno",
-    "email": "bruno@mail.com",
-    "password": "123456",
-    "plan": "standardpackage"
-}
-*/
-
+// Register User
 // POST /api/users/register
 const registerUser = expressAsyncHandler(async (req, res) => {
 
@@ -73,6 +59,25 @@ const registerUser = expressAsyncHandler(async (req, res) => {
 
 })
 
+// Get User Profile - PROTECTED
+// GET /api/users/register
+const getUserProfile = expressAsyncHandler(async (req, res) => {
+
+    const user = await User.findById(req.user._id);
+
+    if (user) {
+        res.json({
+            _id: user._id,
+            name: user.name,
+            email: user.email
+        });
+    } else {
+        res.status(404);
+        throw new Error('User Not Found');
+    }
+
+})
+
 export {
-    authUser, registerUser
+    authUser, registerUser, getUserProfile
 }
