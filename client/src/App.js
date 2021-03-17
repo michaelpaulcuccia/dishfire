@@ -8,6 +8,7 @@ import Register from './components/Register';
 import Plans from './components/Plans';
 import ContactUs from './components/ContactUs';
 import Footer from './components/Footer';
+import HomePrefer from './components/prefer/HomePrefer';
 
 
 const App = () => {
@@ -20,6 +21,7 @@ const App = () => {
         <Route path='/register' component={Register} exact />
         <Route path='/plans' component={Plans} exact />
         <Route path='/contactus' component={ContactUs} exact />
+        <Route path='/prefer' component={HomePrefer} exact />
       </Container>
       <Footer />
     </Router>

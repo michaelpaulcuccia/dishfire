@@ -11,10 +11,6 @@ const NavieBar = () => {
     const userLogin = useSelector(state => state.userLogin);
     const { userInfo } = userLogin;
 
-    //TO DO
-    //setup to show FREE-PREVIEW or STANDARD with Prefer Tab
-    console.log(userInfo);
-
     const logoutHandler = () => {
         dispatch(logout());
     }
