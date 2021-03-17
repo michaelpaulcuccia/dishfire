@@ -1,14 +1,30 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Container, Form, Row, Col } from 'react-bootstrap';
+import { useDispatch, useSelector } from 'react-redux';
+import { register } from '../actions/userActions.js';
 import Message from './Message';
 
-const Register = () => {
+const Register = ({ history, location }) => {
+
+    const dispatch = useDispatch();
 
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [plan, setPlan] = useState('');
     const [planMessage, setPlanMessage] = useState(null);
+
+    const userRegister = useSelector(state => state.userRegister);
+    const { loading, error, userInfo } = userRegister;
+
+    const redirect = location.search ? location.search.split('=')[1] : '/';
+
+    useEffect(() => {
+        //ensure user isn't already logged in
+        if (userInfo) {
+            history.push(redirect)
+        }
+    }, [history, userInfo, redirect]);
 
     const submitHandler = (event) => {
         event.preventDefault();
@@ -18,12 +34,8 @@ const Register = () => {
             setPlanMessage('You Must Select a Plan');
 
         } else {
-            window.alert("Thank you for registering!")
-
+            dispatch(register(name, email, password, plan));
         }
-
-        console.log(name, email, password, plan)
-
     };
 
     return (
@@ -37,6 +49,9 @@ const Register = () => {
 
                 <Col className='py-3'>
                     <h1> Welcome New User</h1>
+
+                    {error && <Message variant='danger'>{error}</Message>}
+                    {loading && <Message variant='warning'>Loading...</Message>}
 
                     <Form className='py-3'
                         onSubmit={submitHandler}
@@ -91,7 +106,6 @@ const Register = () => {
                                 required
                                 onChange={(event) => setPlan(event.target.value)}
                             >
-                                {/* <option disabled selected value='--select an option--'>--select an option--</option> */}
                                 <option defaultValue='--select an option--'>--select an option--</option>
                                 <option value="freepreview">Free Preview</option>
                                 <option value="standardpackage">Standard Package</option>

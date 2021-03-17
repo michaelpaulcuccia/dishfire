@@ -48,7 +48,7 @@ const NavieBar = () => {
                     }
 
                     {/* Show/Hide Prefer Plan Type 1 of 2 */}
-                    {userInfo && userInfo.plan === 'freepackage' &&
+                    {userInfo && userInfo.plan === 'freepreview' &&
                         <LinkContainer to='/prefer'>
                             <Nav.Link as='button' className='nav_btn'>Preview Prefer</Nav.Link>
                         </LinkContainer>
