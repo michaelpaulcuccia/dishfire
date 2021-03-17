@@ -2,6 +2,7 @@ import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Navbar, Nav, NavDropdown } from 'react-bootstrap';
 import { LinkContainer } from 'react-router-bootstrap';
+import { useHistory } from 'react-router-dom'
 import { logout } from '../actions/userActions.js';
 
 const NavieBar = () => {
@@ -11,8 +12,11 @@ const NavieBar = () => {
     const userLogin = useSelector(state => state.userLogin);
     const { userInfo } = userLogin;
 
+    let history = useHistory();
+
     const logoutHandler = () => {
         dispatch(logout());
+        history.push('/');
     }
 
     return (

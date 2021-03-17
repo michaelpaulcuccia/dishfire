@@ -3,12 +3,15 @@ import { Form } from 'react-bootstrap'
 import { useSelector } from 'react-redux';
 import Message from '../Message';
 import JumboPrefer from './preferComponents/JumboPrefer';
+import areaCodes from '../../areaCodes.json';
 
 const HomePrefer = () => {
 
+    //ensure a user is logged in
     const userLogin = useSelector(state => state.userLogin);
     const { userInfo } = userLogin;
 
+    //set a phone number from form
     const [phoneNumber, setPhoneNumber] = useState('');
 
     //input errors
@@ -16,15 +19,15 @@ const HomePrefer = () => {
     const [tripleFiveAreaCode, setTripleFiveAreaCode] = useState(null);
     const [tripleFivePrefix, setTripleFivePrefix] = useState(null);
     const [mustBeNumber, setMustBeNumber] = useState(null);
+    const [dashes, setDashes] = useState(null);
 
     const submitHandler = (event) => {
         event.preventDefault();
 
-        //convert to a 12 item array
+        //convert phone number to a 12 item array
         const phoneArray = [...phoneNumber];
-        console.log(phoneArray)
 
-        //input errors
+        //check for input errors
         if (phoneArray.length < 12) {
             setLessThanTwelve(true);
         } else if (parseInt(phoneArray[0]) === 5 && parseInt(phoneArray[1]) === 5 && parseInt(phoneArray[2]) === 5) {
@@ -42,6 +45,15 @@ const HomePrefer = () => {
             Number.isNaN(parseInt(phoneArray[9])) === true ||
             Number.isNaN(parseInt(phoneArray[10])) === true) {
             setMustBeNumber(true)
+        } else if (phoneArray[3] !== '-' || phoneArray[7] !== '-') {
+            setDashes(true);
+        } else {
+
+            //set area code
+            let areaCode = phoneArray[0] + phoneArray[1] + phoneArray[2];
+            //search areaCodes.json for a city that matches
+            let city = areaCodes.find(item => item.areaCode === areaCode);
+            console.log(city)
         }
     }
 
@@ -70,6 +82,9 @@ const HomePrefer = () => {
                         }
                         {mustBeNumber &&
                             <Message variant='danger'>Must only contain numbers</Message>
+                        }
+                        {dashes &&
+                            <Message variant='danger'>Must contain hyphens in proper location</Message>
                         }
                         <Form.Control
                             type="tel"
