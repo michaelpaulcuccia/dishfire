@@ -70,6 +70,7 @@ const HomePrefer = () => {
         } else if (phoneArray[3] !== '-' || phoneArray[7] !== '-') {
             //dashes aren't entered
             setDashes(true);
+
         } else {
 
             //set area code
@@ -78,17 +79,12 @@ const HomePrefer = () => {
             //search areaCodes.json for a city/state that matches
             let obj = areaCodes.find(item => item.areaCode === areaCode);
 
-            //conditions - city
-            if (obj.city === '' || obj.city === null || obj.city === undefined) {
-                setLocationCity('Not Available');
+            //condition - city BLANK
+            if (!obj) {
+                setLocationCity('Location Currently Not Available');
+                setLocationState('Location Currently Not Available');
             } else {
                 setLocationCity(obj.city);
-            }
-
-            //conditions - state
-            if (obj.state === '' || obj.state === null || obj.state === undefined) {
-                setLocationState('Not Available');
-            } else {
                 setLocationState(obj.state);
             }
         }
@@ -152,13 +148,16 @@ const HomePrefer = () => {
                     </ListGroup>
                     <small>direction and approximate distance from last cell tower ping</small>
                     <br></br>
-                    <br></br>
-                    <h3>Recent SMS Contacts</h3>
-                    <ContactCard />
                 </>
             }
 
-
+            {locationCity && locationState &&
+                <>
+                    <br></br>
+                    <h3 className='py=3'>Recent Electronic Business Cards</h3>
+                    <ContactCard />
+                </>
+            }
 
         </>
     )

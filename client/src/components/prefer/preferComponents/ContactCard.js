@@ -21,8 +21,8 @@ const ContactCard = () => {
                 <Col key={index} className="py-3">
                     <Card style={{ width: '18rem' }}>
                         <ListGroup variant="flush">
-                            <ListGroup.Item>{user.name}</ListGroup.Item>
-                            <ListGroup.Item>{user.phone}</ListGroup.Item>
+                            <ListGroup.Item><strong>Contact Name: </strong>{user.name}</ListGroup.Item>
+                            <ListGroup.Item><strong>Contact Number: </strong>{user.phone}</ListGroup.Item>
                         </ListGroup>
                     </Card>
                 </Col>
