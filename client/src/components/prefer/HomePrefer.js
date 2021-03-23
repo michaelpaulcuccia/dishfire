@@ -3,6 +3,7 @@ import { Form, ListGroup, Row, Col } from 'react-bootstrap'
 import { useSelector } from 'react-redux';
 import Message from '../Message';
 import JumboPrefer from './preferComponents/JumboPrefer';
+import ContactCard from './preferComponents/ContactCard';
 import areaCodes from '../../areaCodes.json';
 
 const HomePrefer = () => {
@@ -150,8 +151,15 @@ const HomePrefer = () => {
                         </Row>
                     </ListGroup>
                     <small>direction and approximate distance from last cell tower ping</small>
+                    <br></br>
+                    <br></br>
+                    <h3>Recent SMS Contacts</h3>
+                    <ContactCard />
                 </>
             }
+
+
+
         </>
     )
 }
