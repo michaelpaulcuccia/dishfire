@@ -9,6 +9,7 @@ import Plans from './components/Plans';
 import ContactUs from './components/ContactUs';
 import Footer from './components/Footer';
 import HomePrefer from './components/prefer/HomePrefer';
+import Spinner from './components/spinner/Spinner'
 
 
 const App = () => {
@@ -22,6 +23,7 @@ const App = () => {
         <Route path='/plans' component={Plans} exact />
         <Route path='/contactus' component={ContactUs} exact />
         <Route path='/prefer' component={HomePrefer} exact />
+        <Route path='/spinner' component={Spinner} exact />
       </Container>
       <Footer />
     </Router>
